@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
@@ -47,30 +48,30 @@ public class MySqlTests {
         Deparment deparment = new Deparment();
         deparment.setName("develop");
         deparmentRepository.save(deparment);
-        Assert.notNull(deparment.getId());
+        Assert.notNull(deparment.getId(),"没有获取到数据");
 
         Role role = new Role();
         role.setName("admin");
         roleRepository.save(role);
-        Assert.notNull(role.getId());
+        Assert.notNull(role.getId(),"没有获取到数据");
 
         User user = new User();
         user.setName("user");
         user.setCreatedate(new Date());
         user.setDeparment(deparment);
         List<Role> roles = roleRepository.findAll();
-        Assert.notNull(roles);
+        Assert.notNull(roles,"没有获取到数据");
         user.setRoles(roles);
 
         userRepository.save(user);
-        Assert.notNull(user.getId());
+        Assert.notNull(user.getId(),"没有获取到数据");
     }
 
     @Test
     public void findPage(){
-        PageRequest pageRequest = new PageRequest(0,10, new Sort(Sort.Direction.ASC, "id"));
-        Page<User> page = userRepository.findAll(pageRequest);
-        Assert.notNull(page);
+        Pageable pageable = PageRequest.of(0,10, new Sort(Sort.Direction.ASC, "id"));
+        Page<User> page = userRepository.findAll(pageable);
+        Assert.notNull(page, "没有获取到数据");
 
         for (User user: page.getContent()) {
             log.info("====User==== user name:{}, department name:{}, role name:{}", user.getName(),user.getDeparment().getName(),user.getRoles().get(0).getName());

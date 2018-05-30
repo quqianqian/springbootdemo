@@ -20,16 +20,15 @@ public class User implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdate;
 
-    @ManyToOne
-    @JoinColumn(name = "did")
-    @JsonBackReference
+    @ManyToOne//多对一
+    @JoinColumn(name = "did")//多对一的关联字段
+    @JsonBackReference  //防止关系对象的递归访问
     private Deparment deparment;
 
-    @ManyToMany(cascade = {},
-            fetch = FetchType.EAGER)
+    @ManyToMany//多对多
     @JoinTable(name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
-            inverseJoinColumns = {@JoinColumn(name = "roles_id")})
+            inverseJoinColumns = {@JoinColumn(name = "roles_id")})//多对多的关联表及其字段
     private List<Role> roles;
 
     @Override
