@@ -1,11 +1,14 @@
 package com.nd.zsp.bootmybatisdemo.Module.Domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-
+//实体类
+// 通用Mapper采用了JPA规范包中的注解，这种的设计避免了重复造轮子，更是让Spring Data Jpa的应用可以轻松切换到Mybatis
+@Table(name = "t_user")
 public class User implements Serializable {
-
-
-
 /*表结构创建一张 t_user 的表
         CREATE TABLE `t_user` (
         `id` int(8) NOT NULL AUTO_INCREMENT COMMENT '主键自增',
@@ -16,6 +19,8 @@ public class User implements Serializable {
         */
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;
