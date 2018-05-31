@@ -4,6 +4,7 @@ import com.nd.zsp.bootmybatisdemo.Module.Domain.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * <p>第一种是基于mybatis3.x版本后提供的注解方式<p/>
  * <p>第二种是早期写法，将SQL写在 XML 中<p/>
  */
+@Component
 @Mapper
 public interface UserMapper {
 
