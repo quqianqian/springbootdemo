@@ -37,6 +37,11 @@ public class UserMapperTests {
     }*/
 
     @Test
+    public void test3(){
+
+    }
+
+//    @Test
     public void test2() throws Exception {
         final int row1 = userMapper.insertSelective(new User("u11", "p11"));
         log.info("[添加结果] - [{}]", row1);
