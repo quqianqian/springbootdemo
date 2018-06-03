@@ -1,5 +1,21 @@
 package com.nd.zsp.redisbootdemo;
 
+import com.nd.zsp.redisbootdemo.domain.User;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.io.Serializable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RedisTests {
@@ -24,7 +40,7 @@ public class RedisTests {
         log.info("[字符缓存结果] - [{}]", k1);
         // TODO 以下只演示整合，具体Redis命令可以参考官方文档，Spring Data Redis 只是改了个名字而已，Redis支持的命令它都支持
         String key = "battcn:user:1";
-        redisCacheTemplate.opsForValue().set(key, new User(1L, "u1", "pa"));
+        redisCacheTemplate.opsForValue().set(key, new User("u1", "pa"));
         // TODO 对应 String（字符串）
         final User user = (User) redisCacheTemplate.opsForValue().get(key);
         log.info("[对象缓存结果] - [{}]", user);

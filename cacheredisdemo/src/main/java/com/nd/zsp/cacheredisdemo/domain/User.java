@@ -1,10 +1,8 @@
-package com.nd.zsp.redisbootdemo.domain;
+package com.nd.zsp.cacheredisdemo.domain;
 
 import java.io.Serializable;
 
 public class User implements Serializable {
-
-    private static final long serialVersionUID = 8655851615465363473L;
     private Long id;
     private String username;
     private String password;
@@ -15,12 +13,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    public User() {
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
     public Long getId() {
