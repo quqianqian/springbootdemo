@@ -21,6 +21,10 @@ public class CacheredisdemoApplicationTests {
 
     @Test
     public void contextLoads() {
+
+    }
+
+    public void test_01() {
         final User user = userService.saveOrUpdate(new User(5555L, "user-555", "pppppp-5555"));
 
         log.info("[saveOrUpdate] - [{}]", user);

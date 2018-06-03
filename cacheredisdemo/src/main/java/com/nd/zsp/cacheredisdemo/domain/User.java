@@ -1,10 +1,16 @@
 package com.nd.zsp.cacheredisdemo.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
+@ApiModel
 public class User implements Serializable {
     private Long id;
+    @ApiModelProperty("用户名")
     private String username;
+    @ApiModelProperty("密码")
     private String password;
 
     public User(Long id, String username, String password) {
