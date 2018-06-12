@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>multi lang & thymeleaf demo</title>
+</head>
+<body>
+<h1>this is a test page</h1>
+<div>当前环境是<label th:text="#{welcome}"></label></div>
+<form method="post" th:action="@{/login}">
+    <input type="text" name="username" value="" placeholder="请输入用户名">
+</form>
+<img th:src="@{/slq-99.9.png}">
+</body>
+</html>
